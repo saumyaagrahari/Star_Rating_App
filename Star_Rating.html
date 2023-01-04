@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        input[type=radio]{
+            display: none;
+        }
+        .card{
+            max-width: 450px;
+            text-align: center;
+            margin: auto;
+            box-shadow: 0 0 15px 0 #000;
+            padding: 15px;
+            background-color: #000;
+            color: #fff;
+            margin: 200px 0px 0px 430px;
+        }
+        .fa-star{
+            font-size: 30px;
+            color: rgb(126,126,126); 
+            transition: 0.1s ease-in-out all;
+        }
+        .stars{
+            padding: 20px;
+            height: 40px;
+        }
+        button{
+            width: 70%;
+            outline: none;
+            border: none;
+            background-color: rgb(75,75,75);
+            padding: 10px;
+            color: #fff;
+            border-radius: 0;
+        }
+        button:hover{
+            box-shadow: 0 0 30px 0 yellow;
+            border: 1px solid #fff;
+        }
+        body{
+            background-color: rgb(105, 16, 113);
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Give Your Stars</h2>
+        <div class="stars">
+            <span><label><i for="star1" class="fa fa-star"></i></label><input type="radio" name="star" id="star1"
+                value="1"></span>
+            <span><label><i for="star2" class="fa fa-star"></i></label><input type="radio" name="star" id="star2"
+                value="2"></span>
+            <span><label><i for="star3" class="fa fa-star"></i></label><input type="radio" name="star" id="star3" 
+                value="3"></span>
+            <span><label><i for="star4" class="fa fa-star"></i></label><input type="radio" name="star" id="star4" 
+                value="4"></span>
+            <span><label><i for="star5" class="fa fa-star"></i></label><input type="radio" name="star" id="star5" 
+                value="5"></span>
+        </div>
+            <input type="text" name="" placeholder="Enter Name"/><br><br>
+        </form>
+        <button type="button" onclick="refreshPage()">Next</button>
+        <script>
+            function refreshPage() {
+                window.location.reload();
+            }
+        </script>
+    </div>
+    <script>
+        document.querySelectorAll("i.fa-star").forEach(function(element,position){
+            element.addEventListener("mouseover",function(){
+                this.style.color = "yellow";
+                this.style.fontSize = "35px";
+                let noOfStar = this.parentNode.parentNode.querySelector("input[name=star]").value;
+
+                document.querySelectorAll("i.fa-star").forEach(function(e,p){
+                    e.style.color = "rgb(126,126,126)";
+                    if ((p+1) <= noOfStar){
+                        e.style.color = "yellow";
+                    }
+                })
+            })
+            element.addEventListener("mouseleave",function(){
+                this.style.fontSize = "30px";
+            })
+        })
+    </script>
+</body>
+</html>
